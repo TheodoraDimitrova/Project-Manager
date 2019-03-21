@@ -42,8 +42,9 @@ router.get("/createProject", isAdmin, (req, res) =>
 );
 router.post("/createProject", isAdmin, (req, res) => {
   req.checkBody("name", "Name is required").notEmpty();
+  req.checkBody('name', 'Name field must is too long(40) or short(5)').isLength({ min: 5, max:40 });
   req.checkBody("description", "Description is required").notEmpty();
-
+  req.checkBody('description', 'Description field is too long(50) or short(5)').isLength({ min: 5, max:50 });
   let errors = req.validationErrors();
   if (errors) {
     res.render("create-project", {
