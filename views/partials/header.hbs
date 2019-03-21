@@ -1,0 +1,27 @@
+ <header>
+        <ul>
+            <li><a href="/">Home</a></li>
+            {{#if user}}
+             {{#if is_admin}}
+             <li><a href="/admin/projects">Projects</a></li>
+            <li><a href="/admin/teams">Teams</a></li>
+              <li><a href="/admin/createTeam">Create Team</a></li>
+            <li><a href="/admin/createProject">Create Project</a></li>
+            {{else}}
+            <li><a href="/users/projects">Projects</a></li>
+            <li><a href="/users/teams">Teams</a></li>
+           {{/if}}
+            <div class="right">
+                <li>Welcome, {{user.fName}}!</li>
+                <li><a href="/users/profile">Profile</a></li>
+                <li>
+                    <form id="logout-form" action="/users/logout"></form>
+                    <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+                </li>
+                {{else}}
+                  <li><a href="/users/login">Login</a></li>
+                <li><a href="/users/register">Register</a></li>
+                {{/if}}
+            </div>
+        </ul>
+    </header>

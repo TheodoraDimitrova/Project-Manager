@@ -1,0 +1,36 @@
+<h1>Teams</h1>
+<form class="search" method="POST" action="/users/teams/search">
+  <label>Seach: </label>
+  <input type="text" name="search">
+  <input type="submit" value="Search">
+</form>
+<div class="teams">
+  {{#each teams}}
+  <div class="team">
+    <h2>{{name}}</h2>
+    <div class="team-info">
+      <h3>Members</h3>
+      {{#if members}}
+      
+      {{#each members}}
+      <p>{{fName}} {{lName}}</p>
+      {{/each}}
+
+      {{else}}
+      <p>No members</p>
+      {{/if}}
+      
+    </div>
+    <div class="team-info">
+      <h3>Projects</h3>
+      {{#if projects}}
+      {{#each projects}}
+      <p>{{name}}</p>
+      {{/each}}
+      {{else}}
+      <p>Team has no projects</p>
+      {{/if}}
+    </div>
+  </div>
+  {{/each}}
+</div>
